@@ -21,5 +21,6 @@
     <orderEntry type="library" name="Maven: com.googlecode.json-simple:json-simple:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.javassist:javassist:3.16.1-GA" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains:annotations-java5:15.0" level="project" />
+    <orderEntry type="library" name="Maven: joker:agreements:1.1-SNAPSHOT" level="project" />
   </component>
 </module>

@@ -1,11 +1,10 @@
 package com.joker.container;
 
-import com.joker.server.entity.Message;
+import com.joker.agreement.entity.Message;
 import io.netty.channel.Channel;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Created by joker on 2017/12/7.

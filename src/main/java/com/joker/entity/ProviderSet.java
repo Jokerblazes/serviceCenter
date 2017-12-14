@@ -1,9 +1,9 @@
 package com.joker.entity;
 
+import com.joker.agreement.entity.Message;
+import com.joker.agreement.entity.MessageType;
 import com.joker.container.ChannelContainer;
 import com.joker.dto.ProviderList;
-import com.joker.server.entity.Message;
-import com.joker.server.entity.MessageType;
 import com.joker.utils.MessagePackageFactory;
 
 import java.util.Observable;
@@ -39,8 +39,9 @@ public class ProviderSet extends Observable {
         synchronized (locks[hash % maxProvider]) {
             providers[hash] = provider;
         }
+        Object[] objects = {OperateType.ADD.value(),provider};
         setChanged();
-        notifyObservers(provider);
+        notifyObservers(objects);
 
     }
 
@@ -56,8 +57,9 @@ public class ProviderSet extends Observable {
         synchronized (locks[hash % maxProvider]) {
             Provider provider = providers[hash];
             providers[hash] = null;
+            Object[] objects = {OperateType.DELETE.value(),provider};
             setChanged();
-            notifyObservers(provider);
+            notifyObservers(objects);
             return provider;
         }
     }

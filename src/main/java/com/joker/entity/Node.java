@@ -1,12 +1,18 @@
 package com.joker.entity;
 
 
+import org.msgpack.annotation.Message;
+
 /**
  * Created by joker on 2017/12/7.
  */
+@Message
 public class Node {
+    @NonEmpty
     private int id;
+    @NonEmpty
     private String ip;
+    @NonEmpty
     private int port;
 
 

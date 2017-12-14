@@ -1,6 +1,7 @@
 package com.joker.dto;
 
 import com.joker.entity.Provider;
+import com.joker.utils.MessagePackageFactory;
 import org.msgpack.annotation.Message;
 
 /**
@@ -9,8 +10,12 @@ import org.msgpack.annotation.Message;
 
 @Message
 public class ProviderList {
-    private final Provider[] providers;
-    private final String serviceName;
+    private Provider[] providers;
+    private String serviceName;
+
+
+    public ProviderList() {
+    }
 
     public ProviderList(Provider[] providers, String serviceName) {
         this.providers = providers;
@@ -24,4 +29,14 @@ public class ProviderList {
     public String getServiceName() {
         return serviceName;
     }
+
+    public void setProviders(Provider[] providers) {
+        this.providers = providers;
+    }
+
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
+    }
+
+
 }

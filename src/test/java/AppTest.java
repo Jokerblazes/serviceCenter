@@ -1,5 +1,6 @@
 import com.joker.container.ProviderContainer;
 import com.joker.entity.*;
+import com.joker.utils.CheckUntils;
 import com.joker.utils.MessagePackageFactory;
 import org.junit.Test;
 
@@ -63,6 +64,15 @@ public class AppTest {
         node4.setPort(8888);
         provider4.setNode(node4);
         container.registService(provider4.getServiceName(),provider4.getNode().getId(),provider4);
+    }
 
+    @Test
+    public void testCheckNull() {
+        Provider provider = new Provider();
+        Node node = new Node();
+        provider.setNode(node);
+        provider.setServiceName("");
+        boolean flag = CheckUntils.checkNull(provider);
+        System.out.printf("f:"+flag);
     }
 }
