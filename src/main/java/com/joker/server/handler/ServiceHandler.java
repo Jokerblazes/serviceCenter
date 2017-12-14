@@ -74,20 +74,18 @@ public class ServiceHandler extends SimpleChannelInboundHandler<Object> {
             ProviderContainer container = ProviderContainer.getInstance();
             final Provider provider = (Provider) MessagePackageFactory.bytesToEntity(reqMessage.getOptionData(), Provider.class);
             boolean flag = CheckUntils.checkNull(provider);
-            Message message = null;
             if (!flag) {
                 logger.error("注册信息不全 {}",provider);
-                message = Message.messageResult(null,MessageType.Error.value(),"");
+                throw new Exception("注册信息不全");
             } else {
                 ChannelKey key = new ChannelKey(provider.getNode().getId(), provider.getServiceName());
                 ctx.channel().attr(ATTACHMENT_KEY).set(key);
                 container.registService(provider.getServiceName(), provider.getNode().getId(), provider);
-                message = Message.messageResult(null, MessageType.Success.value(), "");
+                Message message = Message.messageResult(null, MessageType.Success.value(), "");
                 message.setCmdType(MessageType.Login.value());
+                ctx.writeAndFlush(message);
             }
-            ctx.writeAndFlush(message);
         } else if (cmd == MessageType.CUSTOMER_REGIST.value()) {
-            Message message = null;
             final CustomerDTO customerDTO = (CustomerDTO) MessagePackageFactory.bytesToEntity(reqMessage.getOptionData(), CustomerDTO.class);
             final Customer customer = new Customer(customerDTO);
             boolean flag = CheckUntils.checkNull(customer);
@@ -111,10 +109,10 @@ public class ServiceHandler extends SimpleChannelInboundHandler<Object> {
                     }
                 }
                 CustomerContainer.getInstance().put(customer.getNode().getId(), customer);
-                message = Message.messageResult(null, MessageType.Success.value(), "");
+                Message message = Message.messageResult(null, MessageType.Success.value(), "");
                 message.setCmdType(MessageType.Login.value());
+                ctx.writeAndFlush(message);
             }
-            ctx.writeAndFlush(message);
         } else if (cmd == MessageType.PROVIDER_CLOSE.value()) {
             ChannelKey key = (ChannelKey) ctx.channel().attr(ATTACHMENT_KEY).get();
             cancleError(key);
@@ -128,7 +126,7 @@ public class ServiceHandler extends SimpleChannelInboundHandler<Object> {
     }
 
     //异常处理
-    public void exceptionalProcess(ChannelHandlerContext ctx) {
+    private void exceptionalProcess(ChannelHandlerContext ctx) {
         ChannelKey key = (ChannelKey) ctx.channel().attr(ATTACHMENT_KEY).get();
         String serviceName = key.getServiceName();
         if ("".equals(serviceName))
