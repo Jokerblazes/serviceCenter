@@ -4,7 +4,9 @@ package com.joker.entity;
 import org.msgpack.annotation.Message;
 
 /**
+ * 消费者、生产者公共类
  * Created by joker on 2017/12/7.
+ * https://github.com/Jokerblazes/serviceCenter.git
  */
 @Message
 public class Node {

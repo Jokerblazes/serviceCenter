@@ -7,7 +7,9 @@ import org.msgpack.annotation.Message;
 import java.util.List;
 
 /**
+ * 消费者传输对象
  * Created by joker on 2017/12/7.
+ * https://github.com/Jokerblazes/serviceCenter.git
  */
 @Message
 public class CustomerDTO {

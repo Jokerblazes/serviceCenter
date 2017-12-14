@@ -5,7 +5,9 @@ import com.joker.utils.MessagePackageFactory;
 import org.msgpack.annotation.Message;
 
 /**
+ * 生产者list传输对象
  * Created by joker on 2017/12/8.
+ * https://github.com/Jokerblazes/serviceCenter.git
  */
 
 @Message

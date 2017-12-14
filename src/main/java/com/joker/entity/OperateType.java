@@ -1,7 +1,9 @@
 package com.joker.entity;
 
 /**
+ * 操作类型
  * Created by joker on 2017/12/8.
+ * https://github.com/Jokerblazes/serviceCenter.git
  */
 public enum OperateType {
     DELETE(1),

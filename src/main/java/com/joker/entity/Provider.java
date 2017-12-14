@@ -3,7 +3,9 @@ package com.joker.entity;
 import org.msgpack.annotation.Message;
 
 /**
+ * 生产者
  * Created by joker on 2017/12/7.
+ * https://github.com/Jokerblazes/serviceCenter.git
  */
 @Message
 public class Provider {

@@ -11,7 +11,9 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
+ * 消费者
  * Created by joker on 2017/12/7.
+ * https://github.com/Jokerblazes/serviceCenter.git
  */
 public class Customer implements Observer {
 
@@ -46,6 +48,11 @@ public class Customer implements Observer {
     }
 
 
+    /**
+     * 响应变化
+     * @param o
+     * @param arg 数组 0：操作类型 1：Provider
+     */
     public void update(Observable o, Object arg) {
         Object[] objects = (Object[])arg;
         //通知事件

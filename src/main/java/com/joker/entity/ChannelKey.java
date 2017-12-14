@@ -1,7 +1,9 @@
 package com.joker.entity;
 
 /**
+ * Channel绑定对象
  * Created by joker on 2017/12/7.
+ * https://github.com/Jokerblazes/serviceCenter.git
  */
 public class ChannelKey {
     private final int id;
