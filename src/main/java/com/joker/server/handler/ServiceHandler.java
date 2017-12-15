@@ -41,7 +41,6 @@ public class ServiceHandler extends SimpleChannelInboundHandler<Object> {
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         logger.info("ServiceHandler链接异常，关闭 {}", ctx.channel().toString());
         exceptionalProcess(ctx);
-
     }
 
     @Override

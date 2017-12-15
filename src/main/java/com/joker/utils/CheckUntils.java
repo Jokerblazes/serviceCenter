@@ -6,10 +6,19 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+/**
+ * 检查对象的工具类
+ * Created by joker on 2017/12/7.
+ * https://github.com/Jokerblazes/serviceCenter.git
+ */
 public class CheckUntils {
     private CheckUntils() {}
 
-
+    /**
+     * 检查是否未空
+     * @param object
+     * @return
+     */
     public static boolean checkNull(Object object) {
         Class clazz = object.getClass();
         Field[] fields = clazz.getDeclaredFields();
@@ -20,7 +29,7 @@ public class CheckUntils {
                 continue;
             String name = name = f.getName();
             Method method = null;
-            String methodName = "get" + captureName(name);
+            String methodName = "get" + StringUtils.captureName(name);
             try {
                 method = clazz.getDeclaredMethod(methodName);
             } catch (NoSuchMethodException e) {
@@ -45,12 +54,12 @@ public class CheckUntils {
         return true;
     }
 
-    public static String captureName(String name) {
-        char[] cs=name.toCharArray();
-        cs[0]-=32;
-        return String.valueOf(cs);
-    }
 
+    /**
+     * 检查类型
+     * @param object
+     * @return
+     */
     public static boolean isJavaBasicType(Object object) {
         if (object instanceof Number)
             return true;

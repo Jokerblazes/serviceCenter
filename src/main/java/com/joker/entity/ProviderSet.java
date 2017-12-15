@@ -14,7 +14,6 @@ import java.util.Observer;
  * Created by joker on 2017/12/7.
  * https://github.com/Jokerblazes/serviceCenter.git
  */
-//TODO 未完成注释
 public class ProviderSet extends Observable {
     private final String serviceName;//服务名
     private final static int N_LOCKS = 16;//锁长度
